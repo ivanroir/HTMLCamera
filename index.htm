@@ -3,56 +3,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1" />
     <title>PhotoBooth</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="css/design.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/file.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
-    <style>
-      .overlay {
-        position: absolute; 
-        bottom: 0;
-        width: 100%;
-        font-size: 20px;
-        text-align: center;
-      }
-      
-      .image {
-          display: block;
-          width: 100%;
-          height: -webkit-fill-available;
-      }
-      
-      .captured {
-        position:fixed;
-        width: 100%;
-        height: 100%;
-        display: none;
-      }
-
-      .buttons{
-        display: none;
-      }
-      
-      .user{
-        display: none;
-      }
-
-      .environment{
-        display: block;
-      }
-
-      .try{
-        display: none;
-      }
-
-      .captureCanvas
-      {
-        display: block;
-      }
-
-      </style>      
   </head>
   <body>
-    <img id="fileImage" class="image" style="opacity: 0;"/>
     <div id="container">
       <div id="vid_container">
         <video id="video" autoplay playsinline></video>
@@ -72,13 +28,13 @@
       <div id="gui_controls">
         <div id="controls">
           <button id="switchCameraButton" name="switch Camera" type="button" aria-pressed="false" onclick="switchCamera()" ></button>
-          <button id="takePhotoButton" name="Take Photo" type="button" onclick="divCapture()"></button>
+          <button id="takePhotoButton" name="Take Photo" type="button" onclick="capture()"></button>
           <button id="toggleFullScreenButton" name="toggle FullScreen" type="button" aria-pressed="false" ></button>
           <div style="display: none;">
             <button id="frameTitle" disabled>Choose a Frame</button>
-            <button id="frame1" name="frame 1" type="button" onclick="document.getElementById('frame').src='img/frame4.png'">1</button>
-            <button id="frame2" name="frame 2" type="button" onclick="document.getElementById('frame').src='img/frame5.png'">2</button>
-            <button id="frame3" name="frame 3" type="button" onclick="document.getElementById('frame').src='img/frame3.png'">3</button>
+            <button id="frame1" name="frame 1" type="button" onclick="changeFrame('img/frame6.png')">1</button>
+            <button id="frame2" name="frame 2" type="button" onclick="changeFrame('img/frame5.png')">2</button>
+            <button id="frame3" name="frame 3" type="button" onclick="changeFrame('img/frame3.png')">3</button>
           </div>
           <div class="fileDiv">
             <input type='file' id="file" name="file" class="inputfile inputfile-4" onchange="takeSnapshot(this);" />
@@ -86,14 +42,14 @@
           </div>
         </div>
         <div class="buttons" id="buttons">
-          <button type="button" name="back" id="backButton" onclick="divCaptureClose()"></button>
+          <button type="button" name="back" id="backButton" onclick="close()"></button>
           <a id="imageURL" download>
-            <button type="button" name="download" id="downloadButton" onclick="divCaptureClose()"></button>
+            <button type="button" name="download" id="downloadButton" onclick="close()"></button>
           </a>
         </div>
       </div>
     
-      <div class="captured" id="captured" onclick="divCaptureClose()">
+      <div class="captured" id="captured" onclick="close()">
         <div id="vid_container">
             <div class="captureCanvas" id="captureCanvas">
               <img alt="capture" id="capture" class="image" /> 
@@ -105,7 +61,7 @@
       </div>
     </div>
     <script>
-      function divCapture() {
+      function capture() {
         document.getElementById("captured").style.display = "block";
         document.getElementById("controls").style.display = "none";
         document.getElementById("buttons").style.display = "block";
@@ -113,7 +69,7 @@
         document.getElementById("uploadCanvas").style.display = "none";
           
       }
-      function divCaptureClose() {
+      function close() {
         document.getElementById("captured").style.display = "none";
         document.getElementById("controls").style.display = "block";
         document.getElementById("buttons").style.display = "none";
@@ -121,6 +77,17 @@
         document.getElementById("uploadCanvas").style.display = "none";
       }
       
+      function switchCamera(){
+        if (currentFacingMode != "environment"){
+          document.getElementById("video").style.transform = "scaleX(1)";
+        }else{
+          document.getElementById("video").style.transform = "scaleX(-1)";
+        }
+      }
+
+      function changeFrame(frame) {
+        document.getElementById('frame').src= frame;
+      }
     </script>
     <script src="js/adapter.min.js"></script>
     <script src="js/screenfull.min.js"></script>
@@ -129,14 +96,5 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>
-      function switchCamera(){
-        if (currentFacingMode != "environment"){
-          document.getElementById("video").style.transform = "scaleX(1)";
-        }else{
-          document.getElementById("video").style.transform = "scaleX(-1)";
-        }
-      }
-    </script>
   </body>
 </html>

@@ -1,0 +1,41 @@
+.overlay {
+  position: absolute; 
+  bottom: 0;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: -webkit-fill-available;
+}
+
+.captured {
+  position:fixed;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.buttons{
+  display: none;
+}
+
+.user{
+  display: none;
+}
+
+.environment{
+  display: block;
+}
+
+.try{
+  display: none;
+}
+
+.captureCanvas
+{
+  display: block;
+}

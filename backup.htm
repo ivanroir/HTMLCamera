@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1"
+    />
+    <meta
+      name="description"
+      content="Westmont PhotoBooth"
+    />
+    <meta name="keywords" content="HTML,CSS,JavaScript, WebRTC, Camera" />
+    <meta name="author" content="Kasper Kamperman" />
+    <title>Westmont PhotoBooth</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <style>    
+      .overlay {
+        position: absolute; 
+        bottom: 0; 
+        color: #f1f1f1; 
+        width: 100%;
+       
+        transition: .5s ease;
+        opacity:0;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        opacity: 1;
+      }
+      
+      .image {
+          display: block;
+          width: 100%;
+          height: -webkit-fill-available;
+      }
+      
+      .captured {
+        position:fixed;
+        
+        width: 100%;
+        height: 100%;
+        background:rgba(255,255,255,1);
+        display: none;
+      }
+      
+      </style>
+      
+  </head>
+  <body>
+    <div id="container">
+        <div id="vid_container">
+            <video style="transform: scaleX(-1);" id="video" autoplay playsinline></video>
+                <div id="video_overlay"></div>
+              <div class="overlay">
+                <img src="https://uapvbooth.000webhostapp.com/frame1.png" alt="Frame" id="frame" class="image">
+            </div>
+        </div>
+      <div id="gui_controls">
+        <button
+          id="switchCameraButton"
+          name="switch Camera"
+          type="button"
+          aria-pressed="false"
+        ></button>
+        <button id="takePhotoButton" name="take Photo" type="button" onclick="divCapture()"></button>
+        <button
+          id="toggleFullScreenButton"
+          name="toggle FullScreen"
+          type="button"
+          aria-pressed="false"
+        ></button>
+      </div>
+    </div>
+    <div class="captured" id="captured" onclick="divCaptureClose()">
+        <div id="container">
+          <a id="imgURL" download>
+            <img alt="capture" id="cap" class="image" />
+          </a>
+          <button onclick="divCaptureClose()"> Back</button>
+       </div>
+    </div>
+    
+    <script>
+        function divCapture() {
+            document.getElementById("captured").style.display = "block";
+            document.getElementById("gui_controls").style.display = "none";
+        }
+        function divCaptureClose() {
+            document.getElementById("captured").style.display = "none";
+            document.getElementById("gui_controls").style.display = "block";
+        }
+    </script>
+    <script src="js/adapter.min.js"></script>
+    <script src="js/screenfull.min.js"></script>
+    <script src="js/howler.core.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  </body>
+</html>

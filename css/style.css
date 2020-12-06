@@ -60,7 +60,7 @@ button {
 #takePhotoButton {
   width: 80px;
   height: 80px;
-  background-image: url('img/photo_camera_black_48dp.svg');
+  background-image: url('../img/photo_camera_black_48dp.svg');
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 1);
 }
@@ -73,14 +73,14 @@ button {
   display: none;
   width: 64px;
   height: 64px;
-  background-image: url('img/ic_fullscreen_white_48px.svg');
+  background-image: url('../img/ic_fullscreen_white_48px.svg');
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 #toggleFullScreenButton[aria-pressed='true'] {
   display: none;
-  background-image: url('img/ic_fullscreen_exit_white_48px.svg');
+  background-image: url('../img/ic_fullscreen_exit_white_48px.svg');
 }
 #frameTitle {
   border-style: none;
@@ -115,7 +115,7 @@ button {
   display: none;
   width: 64px;
   height: 64px;
-  background-image: url('img/flip_camera_ios_black_36dp.svg');
+  background-image: url('../img/flip_camera_ios_black_36dp.svg');
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 1);
 }
@@ -129,7 +129,7 @@ button {
   height: 64px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 1);
-  background-image: url('img/arrow_back-24px.svg');
+  background-image: url('../img/arrow_back-24px.svg');
 }
 
 #downloadButton {
@@ -138,7 +138,7 @@ button {
   height: 80px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 1);
-  background-image: url('img/outline_get_app_black_18dp.png');
+  background-image: url('../img/outline_get_app_black_18dp.png');
 } 
 
 @media screen and (orientation: portrait) {
